@@ -1,14 +1,17 @@
-
 import './App.css';
-import React from "react";
-import Weather from "./Weather";
+import Weather from './Weather';
+
 
 function App() {
   return (
-    <div className="App">
-        <div className="App">
-        <Weather defaultCity= "Barcelona"/>
-        </div>
+    <div className='container'> 
+      <div className="App">
+         <Weather defaultCity="Sandton"/>
+      </div>
+      <footer>
+          <a href="https://github.com/NhloniNkwinika/Weather-React-App" target="_blank" rel="noreferrer">Open source code </a>
+          by Nhlonipho
+         </footer>
     </div>
   );
 }

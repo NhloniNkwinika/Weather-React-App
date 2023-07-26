@@ -1,47 +1,33 @@
 import React,{useState} from "react";
 
+
 export default function WeatherTemperature(props){
-    const [unit,setUnit]= useState("celsius");
-    function convertToFahreinheit(event){
+    const [unit, setUnit] = useState("celcius");
+
+    function showFahrenheit (event){
         event.preventDefault();
-        setUnit("fahreinheit");
-    } 
-     function convertToCelsius(event){
-         event.preventDefault();
-        setUnit("celsius");
-     }
-      if (unit === "celsius"){
-    return(
-        <div className= "Conversion">
-        <strong id="temperature">{Math.round(props.celsius)}</strong>
-                      <span className="units">
-                        °C|
-                        <a href="/"
-                          onClick={convertToFahreinheit}
-                          id="celsius-link"
-                          rel="noopener noreferrer"
-                        >
-                        °F
-                        </a>
-                      </span>
-                      </div>
-    );
-      }else{
-        let fahreinheit=(props.celsius * 9)/5 + 32;
+        setUnit("fahrenheit");
+    }
+    function showCelcius(event){
+        event.preventDefault();
+        setUnit("celcius");
+    }
+
+    if (unit === "celcius"){
         return (
-            <div className= "Conversion">
-             <strong id="temperature">{Math.round(fahreinheit)}</strong>
-                      <span className="units">
-                        <a href="/"
-                          onClick={convertToCelsius}
-                          id="fahrenheit-link"
-                          rel="noopener noreferrer"
-                        >
-                        °C
-                        </a>
-                        |°F
-                      </span>
-                      </div>
-        );
-      }
+        <span className="weatherTemperature"><span className="temperature">{Math.round(props.celcius)}</span>
+          <span className="celcius">°C</span>
+          <span className="fahreinheit">|<a href="/" onClick={showFahrenheit}>F</a></span>
+        </span>
+    )  
+    }else{
+        let fahrenheit = (props.celcius * 9) / 5 + 32
+        return (
+            <span className="weatherTemperature"><span className="temperature">{Math.round(fahrenheit)}</span>
+            <span className="celcius"><a href="/" onClick={showCelcius}>°C</a> </span>
+            <span className="fahreinheit">| F </span>
+            </span>
+    ) 
+    }
+  
 }
